@@ -1,15 +1,16 @@
 package main
 
 import (
+	"encoding/csv"
 	"fmt"
+	"io"
 	"net/http"
+	"os"
 
 	"github.com/ishunyu/magpie-dict/parser"
 )
 
-var fileA = "C:\\Users\\Shun\\Documents\\code\\magpie-dict\\resource\\subtitles\\ep21 - a.sbv"
-
-// var fileB = "C:\\Users\\Shun\\Documents\\code\\magpie-dict\\resource\\subtitles\\ep21 - a.sbv"
+var fileCSV = "/Users/shun/code/magpie-dict/resource/data/EP21Outfile.csv"
 
 func hello(w http.ResponseWriter, req *http.Request) {
 	fmt.Fprint(w, "Hello World!")
@@ -25,6 +26,19 @@ func parsee() {
 	fmt.Println(f)
 }
 
+func data() {
+	csvfile, _ := os.Open(fileCSV)
+	data := csv.NewReader(csvfile)
+
+	for {
+		record, err := data.Read()
+		if err == io.EOF {
+			break
+		}
+		fmt.Printf("%s\n", record)
+	}
+}
+
 func main() {
 	// http.HandleFunc("/hello", hello)
 	// http.HandleFunc("/parse", parse)
@@ -33,5 +47,5 @@ func main() {
 	// fmt.Printf("Starting server on port %v...", port)
 	// http.ListenAndServe(fmt.Sprint(":", port), nil)
 
-	parsee()
+	data()
 }
