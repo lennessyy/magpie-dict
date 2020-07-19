@@ -48,7 +48,6 @@ function createMetadataView(d) {
 	const metadataView = document.createElement('div');
 	metadataView.innerHTML = `
     <span>${show} | ${episode}</span>
-    <span>Episode: ${episode}</span>
     <span>Timestamp: ${timestamp}</span>
 `;
 	metadataView.classList.add('meta-data');
