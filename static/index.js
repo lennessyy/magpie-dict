@@ -10,6 +10,7 @@ function search() {
 	};
 	xhttp.open('GET', 'search?searchText=' + searchTerm, true);
 	xhttp.send();
+	createView(data)
 }
 
 function searchKeyDown(ele) {
