@@ -41,10 +41,12 @@ function createView (data){
 }
 
 function createMetadataView (d){
+	const show = d.show
 	const episode = d.episode;
 	const timestamp = d.subs.post.a.start;
 	const metadataView = document.createElement('div');
 	metadataView.innerHTML = `
+    <span>${show} | ${episode}</span>
     <span>Episode: ${episode}</span>
     <span>Timestamp: ${timestamp}</span>
 `;
